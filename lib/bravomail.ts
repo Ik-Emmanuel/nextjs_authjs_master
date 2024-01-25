@@ -8,6 +8,8 @@ export const sendBrevoEmail = async (email:string, subject:string ,  html: strin
       'api-key': api_key,
       'content-type': 'application/json',
     };
+
+   console.log(headers)
   
     const data = {
       "sender": {
