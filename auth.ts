@@ -8,12 +8,18 @@ import { getUserById } from "@/data/user";
 import { getTwoFactorConfirmationByUserId } from "@/data/two-factor-confirmation";
 import { getAccountByUserId } from "./data/account";
 
+
+//update session data 
+import {useSession } from "next-auth/react"
+
+
 export const {
   handlers: { GET, POST },
   auth,
   signIn,
   signOut,
-  update,
+  // unstable_update is said to be unstable check why !!!!
+  unstable_update,
 } = NextAuth({
   pages: {
     signIn: "/auth/login",
@@ -52,6 +58,8 @@ export const {
 
       // check if user opts for 2-step verification  and send token after sign in 
       if (existingUser.isTwoFactorEnabled) {
+
+        // getTwoFactorConfirmationByUserId is function that tells you a users 2 factor token has been confirmed 
         const twoFactorConfirmation = await getTwoFactorConfirmationByUserId(existingUser.id);
         
         // wait 

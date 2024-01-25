@@ -100,6 +100,7 @@ export const login = async (
       }
 
       // create fresh entry for user
+      // twoFactorConfirmation table holds that a new user has just provided a new valid token
       await db.twoFactorConfirmation.create({
         data: {
           userId: existingUser.id,

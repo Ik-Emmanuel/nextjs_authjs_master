@@ -3,7 +3,7 @@
 import * as z from "zod";
 import bcrypt from "bcryptjs";
 
-import { update } from "@/auth";
+import { unstable_update } from "@/auth";
 import { db } from "@/lib/db";
 import { SettingsSchema } from "@/schemas";
 import { getUserByEmail, getUserById } from "@/data/user";
@@ -11,9 +11,15 @@ import { currentUser } from "@/lib/auth";
 import { generateVerificationToken } from "@/lib/tokens";
 import { sendVerificationEmail } from "@/lib/mail";
 
+
+
+/// use to take user update details from form and update the db 
 export const settings = async (
+  
   values: z.infer<typeof SettingsSchema>
 ) => {
+
+  
   const user = await currentUser();
 
   if (!user) {
@@ -76,14 +82,15 @@ export const settings = async (
     }
   });
 
-  // update({
-  //   user: {
-  //     name: updatedUser.name,
-  //     email: updatedUser.email,
-  //     isTwoFactorEnabled: updatedUser.isTwoFactorEnabled,
-  //     role: updatedUser.role,
-  //   }
-  // });
+  // This seem to be said to be unsta
+  unstable_update({
+    user: {
+      name: updatedUser.name,
+      email: updatedUser.email,
+      isTwoFactorEnabled: updatedUser.isTwoFactorEnabled,
+      role: updatedUser.role,
+    }
+  });
 
   return { success: "Settings Updated!" }
 }

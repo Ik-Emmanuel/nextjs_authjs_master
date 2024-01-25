@@ -37,7 +37,9 @@ const AdminPage = () => {
         <p className="text-2xl font-semibold text-center">🔑 Admin</p>
       </CardHeader>
       <CardContent className="space-y-4">
+        {/* use  Role gate defined, to check if user can see the component wrapped within */}
         <RoleGate allowedRole={UserRole.ADMIN}>
+          {/* Contents to be view if user is of right role */}
           <FormSuccess message="You are allowed to see this content!" />
         </RoleGate>
         <div className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-md">

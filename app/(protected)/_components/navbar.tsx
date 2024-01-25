@@ -14,6 +14,7 @@ export const Navbar = () => {
       <div className="flex gap-x-2">
         <Button
           asChild
+          // check if user is on this bit/route and make it bg-coloured else make it white
           variant={pathname === "/server" ? "default" : "outline"}
         >
           <Link href="/server">Server</Link>

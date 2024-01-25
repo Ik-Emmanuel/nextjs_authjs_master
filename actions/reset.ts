@@ -14,14 +14,15 @@ export const reset = async (values: z.infer<typeof ResetSchema>) => {
     return { error: "Invalid emaiL!" };
   }
 
+  // gets user whose password we trying to reset 
   const { email } = validatedFields.data;
-
   const existingUser = await getUserByEmail(email);
 
   if (!existingUser) {
     return { error: "Email not found!" };
   }
 
+  //  send password reset token 
   const passwordResetToken = await generatePasswordResetToken(email);
   await sendPasswordResetEmail(
     passwordResetToken.email,

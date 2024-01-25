@@ -13,8 +13,8 @@ export const sendBrevoEmail = async (email:string, subject:string ,  html: strin
   
     const data = {
       "sender": {
-        "name":"Geona",
-        "email":"hello@geona.io"
+        "name":"mail_sender",
+        "email":"kaysnuggets@gmail.com"
       },
       "to": [{"email": email}],
       "subject": subject,
@@ -31,6 +31,7 @@ export const sendBrevoEmail = async (email:string, subject:string ,  html: strin
       const response = await axios.post(url, data, { headers });
       const statusCode = response.status;
       console.log(statusCode)
+      console.log(response)
       
     } catch (error) {
       console.error(error);
