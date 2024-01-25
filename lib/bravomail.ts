@@ -2,9 +2,10 @@ import axios from 'axios';
 
 export const sendBrevoEmail = async (email:string, subject:string ,  html: string, token?: string,) => {
     const url = "https://api.sendinblue.com/v3/smtp/email";
+    const api_key =  process.env.BRAVO_MAIL_API 
     const headers = {
       'accept': 'application/json',
-      'api-key': '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',
+      'api-key': api_key,
       'content-type': 'application/json',
     };
   

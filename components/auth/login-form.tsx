@@ -139,6 +139,7 @@ export const LoginForm = () => {
                         asChild
                         className="px-0 font-normal"
                       >
+                        {/* redirect users to go reset password */}
                         <Link href="/auth/reset">Forgot password?</Link>
                       </Button>
                       <FormMessage />
