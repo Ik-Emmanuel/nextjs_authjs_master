@@ -26,6 +26,10 @@ export const newVerification = async (token: string) => {
     return { error: "Email does not exist!" };
   }
 
+  // if success set email verified by add date where it was empty before
+
+  // for email or password change, 
+  // email: existingToken.email, this will be used to modify users email
   await db.user.update({
     where: { id: existingUser.id },
     data: { 

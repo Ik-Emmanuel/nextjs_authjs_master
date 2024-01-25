@@ -13,8 +13,8 @@ export const NewVerificationForm = () => {
   const [error, setError] = useState<string | undefined>();
   const [success, setSuccess] = useState<string | undefined>();
 
+  // get token from the url
   const searchParams = useSearchParams();
-
   const token = searchParams.get("token");
 
   const onSubmit = useCallback(() => {
